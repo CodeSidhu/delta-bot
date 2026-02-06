@@ -1,11 +1,18 @@
 from delta_rest_client import DeltaRestClient, OrderType
 
 # ----------------- DELTA CLIENT -----------------
+import os
+from delta_rest_client import DeltaRestClient, OrderType
+
+API_KEY = os.environ.get("DELTA_API_KEY")
+API_SECRET = os.environ.get("DELTA_API_SECRET")
+
 delta_client = DeltaRestClient(
     base_url='https://cdn-ind.testnet.deltaex.org',
-    api_key='7UEObgxTWwoEHeupeCVp7dkHBFILww',
-    api_secret='sVi1UL53ELm1jOM9WG8KvthCSyBu08103VFqBBboH8jDs5viVHUC5HpIrBcJ'
+    api_key=API_KEY,
+    api_secret=API_SECRET
 )
+
 
 PRODUCT_ID = 84
 ORDER_SIZE = 1
@@ -88,4 +95,5 @@ def handle_signal(signal):
 
     elif "SELL" in signal:
         sell()
+
 
